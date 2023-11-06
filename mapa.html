@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        VisiMidia Painel
+    </title>
+    <link rel="shortcut icon" href="/images/logo-mb.png" type="image/png">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <style>
+        .invetario_button {
+            justify-content: right;
+            float: right;
+            margin-right: 0;
+            margin-left: 60%;
+            display: flex;
+        }
+
+        .bt-plus {
+            border-radius: 5px;
+            border: none;
+            background: #04d182;
+            width: 50px;
+            margin-right: 10px;
+            height: 50px;
+            font-size: 22px;
+            color: rgb(255, 255, 255);
+        }
+
+        .bt-paste {
+            border-radius: 5px;
+            border: none;
+            background: #3700ff;
+            width: 50px;
+            margin-right: 10px;
+            height: 50px;
+            font-size: 22px;
+            color: rgb(255, 255, 255);
+        }
+
+        .bt-edit {
+            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #1371ff;
+            font-size: 22px;
+            margin-right: 5px;
+            color: rgb(255, 255, 255);
+        }
+
+        .bt-remove {
+            border-radius: 5px;
+            border: none;
+            width: 40px;
+            height: 40px;
+            background: #d10442;
+            font-size: 22px;
+            color: rgb(255, 255, 255);
+        }
+
+        .order-esgotado {
+            color: #ff0037;
+            background-color: #ab002554;
+        }
+
+        .order-quase {
+            color: #ff5e00;
+            background-color: #bb450554;
+        }
+
+        .order-status {
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .order-ready {
+            color: #2a59d1;
+            background-color: rgba(62, 121, 247, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" style="background-color: #080f25; color: rgb(167, 167, 167);">
+
+
+        <div class="sidebar-logo">
+            <img src="./images/logo-lg.png" alt="Comapny logo">
+            <div class="sidebar-close" id="sidebar-close">
+                <i class='bx bx-left-arrow-alt'></i>
+            </div>
+        </div>
+
+
+        <!-- SIDEBAR MENU -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span>dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventario.html" >
+                    <i class='bx bx-package'></i>
+                    <span>inventario</span>
+                </a>
+            </li>
+            <li>
+                <a href="faturamento.html">
+                    <i class='bx bx-chart'></i>
+                    <span>faturamento</span>
+                </a>
+            </li>
+            <li>
+                <a href="relatoios.html">
+                    <i class='bx bx-file'></i>
+                    <span>Relatorios</span>
+                </a>
+            </li>
+            <li>
+                <a href="instalar.html">
+                    <i class='bx bx-wrench'></i>
+                    <span>instalar*</span>
+                </a>
+            </li>
+            <li>
+                <a href="mapa.html" class="active">
+                    <i class='bx bx-map'></i>
+                    <span>Mapa</span>
+                </a>
+            </li>
+            <li>
+                <a href="contratos.html">
+                    <i class='bx bx-pen'></i>
+                    <span>Contratos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-mail-send'></i>
+                    <span>mail</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-chat'></i>
+                    <span>chat</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-calendar'></i>
+                    <span>calendar</span>
+                </a>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-cog'></i>
+                    <span>settings</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                            darkmode
+                            <span class="darkmode-switch"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+    <!-- END SIDEBAR -->
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+
+            <div class="main-title">
+            <img src="/images/logo-mb.png" style="width: 70px; margin-right: 15px;" alt="">
+            </div>
+            <div class="main-title">
+                Mapa
+            </div>
+            <div class="invetario_button d-flex" style="flex-direction: row;">
+                <button class="bt-plus">
+                    <i class="bx bx-plus"></i>
+                </button>
+   
+
+
+            </div>
+        </div>
+        <div class="main-content">
+            <table class="table col-3 col-md-6 col-sm-12">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">OutDoor </th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Cod do OutDoor</th>
+                        <th scope="col">Aluguel OutDoor</th>
+                        <th scope="col">Local OutDoor</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>R$255</td>
+                        <td>R$255</td>
+                        <td> <button class="bt-remove">
+                                <i class="bx bx-trash text-light"></i>
+                            </button></td>
+                        <td> <button class="bt-edit">
+                                <i class="bx bx-pen"></i>
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>R$255</td>
+                        <td>R$255</td>
+                        <td>R$255</td>
+                        <td> <button class="bt-remove">
+                                <i class="bx bx-trash text-light"></i>
+                            </button></td>
+                        <td> <button class="bt-edit">
+                                <i class="bx bx-pen"></i>
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        <td>R$255</td>
+                        <td>R$255</td>
+                        <td>R$255</td>
+                        <td> <button class="bt-remove">
+                                <i class="bx bx-trash text-light"></i>
+                            </button></td>
+                        <td> <button class="bt-edit">
+                                <i class="bx bx-pen"></i>
+                            </button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div class="col-12">
+            <!-- ORDERS TABLE -->
+            <div class="box">
+                <div class="box-header">
+                    Alertas de pagamento de OutDoor
+                </div>
+                <div class="box-body overflow-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">OutDoor </th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Cod do OutDoor</th>
+                                <th scope="col">Aluguel OutDoor</th>
+                                <th scope="col">Local OutDoor</th>
+                                <th scope="col">Numero</th>
+        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#2345</td>
+                                <td>
+                                    <div class="order-owner">
+                                        <span>tuat tran anh</span>
+                                    </div>
+                                </td>
+                                <td>2021-05-09</td>
+                                <td>
+                                    <span class="order-status order-esgotado">
+                                        Esgotado
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment-status payment-pending">
+                                        <div class="dot"></div>
+                                        <span>Pending</span>
+                                    </div>
+                                </td>
+                                <td>$123.45</td>
+                                <td>$123.45</td>
+                            </tr>
+                            <tr>
+                                <td>#2345</td>
+                                <td>
+                                    <div class="order-owner">
+                                        <span>John doe</span>
+                                    </div>
+                                </td>
+                                <td>2021-05-09</td>
+                                <td>
+                                    <span class="order-status order-esgotado">
+                                        Esgotado
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment-status payment-paid">
+                                        <div class="dot"></div>
+                                        <span>Paid</span>
+                                    </div>
+                                </td>
+                                <td>$123.45</td>
+                                <td>$123.45</td>
+                            </tr>
+                            <tr>
+                                <td>#2345</td>
+                                <td>
+                                    <div class="order-owner">
+                                        <span>evelyn</span>
+                                    </div>
+                                </td>
+
+                                <td>2021-05-09</td>
+                                <td>
+                                    <span class="order-status order-quase
+                                    ">
+                                        Quase esgotando
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment-status payment-paid">
+                                        <div class="dot"></div>
+                                        <span>Paid</span>
+                                    </div>
+                                </td>
+                                <td>$123.45</td>
+                                <td>$123.45</td>
+                            </tr>
+
+                            <tr>
+                                <td>#2345</td>
+                                <td>
+                                    <div class="order-owner">
+                                        <span>John doe</span>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td>
+                                    <span class="order-status order-esgotado">
+                                        Esgotado
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment-status payment-paid">
+                                        <div class="dot"></div>
+                                        <span>Paid</span>
+                                    </div>
+                                </td>
+                                <td>$123.45</td>
+                                <td>$123.45</td>
+                            </tr>
+                            <tr>
+                                <td>#2345</td>
+                                <td>
+                                    <div class="order-owner">
+                                        <span>evelyn</span>
+                                    </div>
+                                </td>
+                                <td>2021-05-09</td>
+                                <td>
+                                    <span class="order-status order-quase">
+                                        Quase esgotando
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment-status payment-paid">
+                                        <div class="dot"></div>
+                                        <span>Paid</span>
+                                    </div>
+                                </td>
+                                <td>$123.45</td>
+                                <td>$123.45</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END ORDERS TABLE -->
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+
+    <div class="overlay"></div>
+
+    <!-- SCRIPT -->
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- APP JS -->
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>
